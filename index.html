@@ -27,74 +27,68 @@
             color: white;
         }
 
-        .particle {
-            position: absolute;
-            background: #ffb3c1;
-            border-radius: 50%;
-            opacity: 0.2;
-            pointer-events: none;
-            animation: fly 20s infinite linear;
-        }
-
-        @keyframes fly {
+        /* HEARTBEAT ANIMATION */
+        @keyframes heartbeat {
             0% {
-                transform: translateY(100vh);
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             }
 
-            100% {
-                transform: translateY(-10vh);
+            14% {
+                transform: scale(1.03);
             }
-        }
 
-        /* HEARTBEAT Animation for all cards */
-        .container {
-            text-align: center;
-            background: rgba(25, 5, 5, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: clamp(20px, 5vw, 50px);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 77, 109, 0.3);
-            width: 95%;
-            max-width: 800px;
-            position: relative;
-            display: none;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            margin: 20px;
-            animation: cardHeartbeat 2.5s infinite ease-in-out;
-        }
-
-        @keyframes cardHeartbeat {
-
-            0%,
-            100% {
+            28% {
                 transform: scale(1);
             }
 
-            50% {
-                transform: scale(1.02);
+            42% {
+                transform: scale(1.03);
             }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 15px 45px rgba(255, 77, 109, 0.3);
+            }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(25, 5, 5, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: clamp(20px, 5vw, 40px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 77, 109, 0.4);
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            display: none;
+            margin: 20px;
+            animation: heartbeat 2.5s infinite ease-in-out;
         }
 
         .active {
             display: block;
-            animation: fadeIn 1s ease forwards, cardHeartbeat 2.5s infinite ease-in-out;
+            animation: fadeIn 0.8s ease forwards, heartbeat 2.5s infinite ease-in-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(10px);
             }
 
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
         video {
             width: 100%;
             border-radius: 15px;
-            max-height: 55vh;
+            max-height: 45vh;
             background: #000;
             margin-top: 10px;
         }
@@ -102,58 +96,39 @@
         h1 {
             font-family: 'Dancing Script', cursive;
             color: #ff8fa3;
-            font-size: clamp(24px, 6vw, 40px);
-            margin-bottom: 15px;
+            font-size: clamp(20px, 5vw, 32px);
+            margin-bottom: 10px;
         }
 
         h2 {
             font-family: 'Great Vibes', cursive;
             color: #ff4d6d;
-            font-size: clamp(20px, 4vw, 30px);
+            font-size: 26px;
         }
 
         .typewriter {
-            font-size: clamp(14px, 2.5vw, 19px);
-            line-height: 1.8;
-            margin: 20px 0;
+            font-size: clamp(13px, 2vw, 16px);
+            line-height: 1.6;
+            margin: 15px 0;
             color: #fce4ec;
             text-align: center;
-            min-height: 60px;
+            min-height: 100px;
+            white-space: pre-line;
         }
 
         button {
-            margin-top: 10px;
-            padding: 15px 40px;
+            margin-top: 15px;
+            padding: 12px 35px;
             border: none;
             border-radius: 50px;
             background: linear-gradient(45deg, #ff4d6d, #800f2f);
             color: white;
             cursor: pointer;
             font-weight: bold;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+            font-size: 13px;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
         }
 
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        input {
-            padding: 15px;
-            width: 80%;
-            max-width: 300px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            text-align: center;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        /* Dhadakta Dil for Last Screen */
         #finalEnding {
             position: fixed;
             inset: 0;
@@ -166,10 +141,10 @@
         }
 
         .big-heart {
-            font-size: 100px;
+            font-size: 90px;
             color: #ff4d6d;
             animation: beat 0.8s infinite;
-            filter: drop-shadow(0 0 30px #ff4d6d);
+            filter: drop-shadow(0 0 40px #ff4d6d);
             margin-bottom: 20px;
         }
 
@@ -189,34 +164,31 @@
 
 <body>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto">
         <source src="hbd.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container active" id="card0">
         <h1>Suno Meri Jaan Mehwi... ❤️</h1>
-        <p class="typewriter">Dhadkano ko thaam lo... Yeh safar sirf hamare liye hai. Kya tum tayyar ho? Kiya tum mujhy sy piyar krti ho?</p>
-        <input type="text" id="answer" placeholder="I Know Yes..." style="padding:15px; width:80%; max-width:300px; border-radius:10px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:white; text-align:center; font-size:16px; margin-bottom:20px;" /> <br>
+        <p class="typewriter">Dhadkano ko thaam lo... Yeh safar sirf hamare liye hai. Kya tum tayyar ho? Kiya tum mujhy
+            sy piyar krti ho?</p>
+        <input type="text" id="answer" placeholder="I Know 'Yes'..."
+            style="padding:12px; width:80%; max-width:250px; border-radius:10px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:white; text-align:center; margin-bottom:15px;" />
+        <br>
         <button onclick="startExperience()">Shuru Karein ✨</button>
     </div>
 
     <div class="container" id="videoCard">
-        <h1>Happy Birthday My Pookie... 🎂</h1>
-        <video id="myVideo" playsinline>
+        <h1>Hamari Yaadein... 🎞️</h1>
+        <video id="myVideo" playsinline preload="auto">
             <source src="video.mp4" type="video/mp4">
         </video>
     </div>
 
     <div class="container" id="card_bday">
-        <h1>Happy Birthday Mehwi! 🎂</h1>
+        <h1>Happy Birthday, Meri Pyari Mehwi! ❤️🥰</h1>
         <p class="typewriter" id="text_bday"></p>
-        <button id="btn_bday" style="display:none" onclick="showDedication()">Aagay Barhein ✨</button>
-    </div>
-
-    <div class="container" id="card_dedication">
-        <h2>Mehwi... 🌹</h2>
-        <p class="typewriter" id="text_dedication"></p>
-        <button id="btn_dedication" style="display:none" onclick="startNovel()">Novel Parhein 📖</button>
+        <button id="btn_bday" style="display:none" onclick="startNovel()">Novel Parhein 📖</button>
     </div>
 
     <div id="novelContainer"></div>
@@ -224,53 +196,56 @@
     <div id="finalEnding">
         <div class="big-heart">❤️</div>
         <h1 id="finalMsg"
-            style="font-family: 'Great Vibes'; font-size: clamp(28px, 6vw, 55px); color: #ff8fa3; text-align: center; padding: 20px;">
+            style="font-family: 'Great Vibes'; font-size: 32px; color: #ff8fa3; text-align: center; padding: 20px;">
         </h1>
         <p style="letter-spacing: 5px; color: #ffb3c1; font-weight: bold; margin-bottom: 10px;">TRAIN RUKI THI, DIL NAHI
         </p>
-        <p style="font-size: 16px; color: #888;">Hamesha Tumhara, <b>Abdul Haseeb</b></p>
+        <p style="font-size: 14px; color: #888;">Hamesha Tumhara, <b>Abdul Haseeb</b></p>
     </div>
 
     <script>
         const video = document.getElementById('myVideo');
         const audio = document.getElementById('bgMusic');
 
-        // All 20 Chapters Integrated from PDF 
+        const bdayWish = `Meri jaan, aaj ka din mere liye saal ka sabse khaas din hai, kyunki aaj us hasti ka janamdin hai jisne meri zindagi ko mukammal kiya hai. Jab se tum meri life mein aayi ho, mera har din khush-numa ho gaya hai. Tum sirf meri mohabbat nahi ho, tum mera sukoon, meri sabse behtareen dost aur meri rooh ka hissa ho. 💖✨
+
+Main har din tumhein dekh kar shukar ada karta hoon. Tumhari sadgi, tumhara khuloos aur tumhari ye muskurahat meri duniya hai. Main tumse wada karta hoon ke main humesha tumhare saath ek mazboot darakht ki tarah khara rahoonga. Tum mujh par har mamly mein aankhein band kar ke bharosa kar sakti ho—main tumhara wo nigehbaan (protector) hoon jo tumhein kabhi aanch nahi aane dega. 🏡❤️
+
+Mera pyar tumhare liye sirf lafzon tak nahi hai, meri har koshish tumhein khush dekhne ke liye hogi. Main wada karta hoon ke tumhein humesha izzat doonga, tumhari parwah karunga aur tumhein duniya ka sabse mehfooz aur khush-kismat insaan mehsoos karwaonga. 💑💞
+
+Allah kare ye saal tumhari zindagi mein behisaab khushiyan, sukoon aur kamyabi lekar aaye. Tum jo bhi khwab dekho, wo haqiqat ban jayein aur main har qadam par tumhara hath thame tumhare saath rahoon. 🌟🎁
+
+Salgirah Mubarak ho, meri har khushi, meri Mehwi! 🎊💋💘
+Humesha sirf tumhara, Tumhara Haseeb ❤️🔥`;
+
+        // ALL 20 CHAPTERS
         const novelData = [
-            { ch: "Chapter 1", title: "Pehli Nazar Ka Bojh", text: "Kuch chehray sirf dekhe jaate hain aur kuch dil par reh jaate hain. Tumhari pehli nazar ne waqt ko rok diya, aur har saans mein tumhari khushboo mehsoos hui. Mere dil ki dhadkan tumhare naam ho gayi." },
-            { ch: "Chapter 2", title: "Awaaz Jo Dil Tak Aati Hai", text: "Tumhari awaaz mein woh narmi thi jo seedha dil tak utarti hai. Har call ke baad khamoshi bhi tumhari lagti thi, aur har muskaan mere liye ek sazaa aur sukoon ka mix ban gayi." },
-            { ch: "Chapter 3", title: "Bechaini Ka Naam", text: "Tum online hoti, mera dil tez dhadakta. Tum offline hoti, mera dil udaas ho jata. Yeh bechaini sirf mohabbat thi, jo alfaaz mein nahi, mehsoos karne se samajh aati thi." },
-            { ch: "Chapter 4", title: "Khwaab Jahan Rooh Milti Hai", text: "Train, cabin, aur raat. Tumhara haath mere qareeb tha. Chhoona zaroori nahi tha, mehsoos hona kaafi tha. Tumhari aankhon ka band hona meri zimmedari ban gayi, aur main usme kho gaya." },
-            { ch: "Chapter 5", title: "Sawal Jo Dil Se Darrate Hain", text: "Tumne poocha: 'Yeh sahi hai?' Mujhe pata tha ke yeh sawal darr se nahi, ehmiyat se paida hua hai. Aur main sirf muskuraya, kyun ke dil jaanta tha yeh sach hai." },
-            { ch: "Chapter 6", title: "Qareebi Jo Rok Li Gayi", text: "Tumne kaha: 'Rok lo.' Main ne tumhe chhor diya. Pyaar ka matlab hamesha paas hona nahi hota, kabhi kabhi sirf mehsoos karna hi kaafi hota hai." },
-            { ch: "Chapter 7", title: "Judaai Ka Din", text: "Tum chali gayi aur kamray bolne lage. Judaai ne hamari mohabbat ko gehra kar diya, aur har yaad mein tumhari muskaan basi rahi." },
-            { ch: "Chapter 8", title: "Khamoshi Jo Cheekh Ban Gayi", text: "Tumhari khamoshi mere liye sawaal nahi, balkay dard thi jo alfaaz ke bagair mehsoos hoti hai. Har raat sirf tumhari yaadon mein guzri." },
-            { ch: "Chapter 9", title: "Intezaar Jo Dua Ban Gaya", text: "Main ne tumhe roka nahi. Bas chaha. Aur yeh chahna ibadat jaisa tha. Har pal tumhari tasveer mere dil mein bas gayi thi." },
-            { ch: "Chapter 10", title: "Wada Jo Bola Nahi Gaya", text: "Humne kuch kaha nahi. Magar aankhon se woh wada ho gaya jo lafzon se nahi hota. Tumhara haath mera haath pakar gaya, aur dil khushiyon se bhar gaya." },
-            { ch: "Chapter 11", title: "Waqt, Faaslay aur Yaadein", text: "Tum door thi aur main qareeb. Yaadein faaslay nahi maanti. Tumhari yaadon ne mera dil aur zindagi dono roshan kar diye." },
-            { ch: "Chapter 12", title: "Woh Message", text: "Tumhara message: 'Tum abhi bhi waise ho?' Ne sab kuch wapas le aaya. Ek pal mein, dooriyan chhoti ho gayi aur dil qareeb." },
-            { ch: "Chapter 13", title: "Door Reh Kar Qareeb Aana", text: "Tumhara poochna, 'Khaya tha?', 'Thak gaye ho?' - yeh sab lafz pyaar ke saboot thay. Har baat, har muskurahat, sab kuch mujhe tumhare qareeb le aaya." },
-            { ch: "Chapter 14", title: "Wapsi", text: "Tum ne kaha: 'Main aa rahi hoon.' Aur waqt ne pehli baar jaldi ki. Tumhara qareeb aana, har faasla mita gaya." },
-            { ch: "Chapter 15", title: "Mulaqat Jo Dheere Se Hui", text: "Koi bhagna nahi, koi drama nahi. Sirf aankhein jo aik doosray ko pehchaan rahi thin. Tumhari muskaan, tumhari aankhein - sab kuch bas mere liye tha." },
-            { ch: "Chapter 16", title: "Sab Se Mehfooz Qareebi", text: "Tumhara haath mere haath par aaya. Yeh qareebi mehsoos thi, aur yeh pyaar tha jo bina lafz ke bhi sab kuch keh gaya." },
-            { ch: "Chapter 17", title: "Faisla", text: "Tumne kaha: 'Ab sach ke saath chalay?' Main ne sirf haath mazboot pakra. Yeh hi faisla tha jo sabse gehra tha." },
-            { ch: "Chapter 18", title: "Mukammal Hone Ka Matlab", text: "Mukammal hone ka matlab hamesha saath rehna nahi hota. Mukammal hone ka matlab sach ke saath rehna hota hai. Aur hum ne yahi chuna." },
-            { ch: "Chapter 19", title: "Yaad Ban Kar Rehna", text: "Tum ab bhi yaad ho aur mera hissa bhi. Yeh dono saath ho jaayen toh kahani poori hoti hai. Har pal tumhari yaad mere saath hai." },
-            { ch: "Chapter 20", title: "Epilogue: Tum Yaad Bhi Ho", text: "Train phir chali. Zindagi bhi. Magar dil ne ek station hamesha ke liye apna bana liya. Tum yaad bhi ho, aur mera hissa bhi. Train ruki thi. Dil nahi." }
+            { ch: "Chapter 1", title: "Pehli Nazar Ka Bojh", text: "Kuch chehray sirf dekhe jaate hain aur kuch dil par reh jaate hain. Tumhari pehli nazar ne waqt ko rok diya." },
+            { ch: "Chapter 2", title: "Awaaz Jo Dil Tak Aati Hai", text: "Tumhari awaaz mein woh narmi thi jo seedha dil tak utarti hai. Har call ke baad khamoshi bhi tumhari lagti thi." },
+            { ch: "Chapter 3", title: "Bechaini Ka Naam", text: "Tum online hoti, mera dil tez dhadakta. Tum offline hoti, mera dil udaas ho jata." },
+            { ch: "Chapter 4", title: "Khwaab Jahan Rooh Milti Hai", text: "Train, cabin, aur raat. Tumhara haath mere qareeb tha. Chhoona zaroori nahi tha, mehsoos hona kaafi tha." },
+            { ch: "Chapter 5", title: "Sawal Jo Dil Se Darrate Hain", text: "Tumne poocha: 'Yeh sahi hai?' Mujhe pata tha ke yeh sawal darr se nahi, ehmiyat se paida hua hai." },
+            { ch: "Chapter 6", title: "Qareebi Jo Rok Li Gayi", text: "Tumne kaha: 'Rok lo.' Main ne tumhe chhor diya. Pyaar ka matlab hamesha paas hona nahi hota." },
+            { ch: "Chapter 7", title: "Judaai Ka Day", text: "Tum chali gayi aur kamray bolne lage. Judaai ne hamari mohabbat ko gehra kar diya." },
+            { ch: "Chapter 8", title: "Khamoshi Jo Cheekh Ban Gayi", text: "Tumhari khamoshi mere liye sawaal nahi, balkay dard thi jo alfaaz ke bagair mehsoos hoti hai." },
+            { ch: "Chapter 9", title: "Intezaar Jo Dua Ban Gaya", text: "Main ne tumhe roka nahi. Bas chaha. Aur yeh chahna ibadat jaisa tha." },
+            { ch: "Chapter 10", title: "Wada Jo Bola Nahi Gaya", text: "Humne kuch kaha nahi. Magar aankhon se woh wada ho gaya jo lafzon se nahi hota." },
+            { ch: "Chapter 11", title: "Waqt, Faaslay aur Yaadein", text: "Tum door thi aur main qareeb. Yaadein faaslay nahi maanti. Tumhari yaadon ne zindagi roshan kar di." },
+            { ch: "Chapter 12", title: "Woh Message", text: "Tumhara message: 'Tum abhi bhi waise ho?' Ne sab kuch wapas le aaya. Ek pal mein dil qareeb ho gaye." },
+            { ch: "Chapter 13", title: "Door Reh Kar Qareeb Aana", text: "Tumhara poochna, 'Khaya tha?', 'Thak gaye ho?' - yeh sab lafz pyaar ke saboot thay." },
+            { ch: "Chapter 14", title: "Wapsi", text: "Tum ne kaha: 'Main aa rahi hoon.' Aur waqt ne pehli baar jaldi ki. Har faasla mita gaya." },
+            { ch: "Chapter 15", title: "Mulaqat Jo Dheere Se Hui", text: "Koi bhagna nahi, koi drama nahi. Sirf aankhein jo aik doosray ko pehchaan rahi thin." },
+            { ch: "Chapter 16", title: "Sab Se Mehfooz Qareebi", text: "Tumhara haath mere haath par aaya. Yeh qareebi mehsoos thi, aur yeh pyaar tha." },
+            { ch: "Chapter 17", title: "Faisla", text: "Tumne kaha: 'Ab sach ke saath chalay?' Main ne sirf haath mazboot pakra. Yeh hi sabse gehra faisla tha." },
+            { ch: "Chapter 18", title: "Mukammal Hone Ka Matlab", text: "Mukammal hone ka matlab hamesha saath rehna nahi hota. Mukammal hone ka matlab sach ke saath rehna hota hai." },
+            { ch: "Chapter 19", title: "Yaad Ban Kar Rehna", text: "Tum ab bhi yaad ho aur mera hissa bhi. Yeh dono saath ho jaayen toh kahani poori hoti hai." },
+            { ch: "Chapter 20", title: "Epilogue: Tum Yaad Bhi Ho", text: "Train phir chali. Zindagi bhi. Magar dil ne ek station hamesha ke liye apna bana liya. Train ruki thi. Dil nahi." }
         ];
 
         novelData.forEach((item, i) => {
             const div = document.createElement('div');
-            div.className = 'container';
-            div.id = `novelCard${i}`;
-            div.innerHTML = `
-                <h2>${item.ch}</h2>
-                <h1>${item.title}</h1>
-                <p class="typewriter" id="novelText${i}"></p>
-                <button id="novelBtn${i}" style="display:none" onclick="showNextNovel(${i + 1})">
-                    ${i === novelData.length - 1 ? 'Aakhri Baat ❤️' : 'Agla Chapter ✨'}
-                </button>
-            `;
+            div.className = 'container'; div.id = `novelCard${i}`;
+            div.innerHTML = `<h2>${item.ch}</h2><h1>${item.title}</h1><p class="typewriter" id="novelText${i}"></p><button id="novelBtn${i}" style="display:none" onclick="showNextNovel(${i + 1})">${i === novelData.length - 1 ? 'Aakhri Baat ❤️' : 'Agla Chapter ✨'}</button>`;
             document.getElementById('novelContainer').appendChild(div);
         });
 
@@ -282,11 +257,10 @@
 
         function startExperience() {
             if (document.getElementById('answer').value.trim() !== "") {
+                audio.play().then(() => { audio.pause(); });
                 document.getElementById('card0').classList.remove('active');
-                const vc = document.getElementById('videoCard');
-                vc.classList.add('active');
-                video.load(); // Refresh video to ensure it plays
-                video.play().catch(e => console.log("Manual play required"));
+                document.getElementById('videoCard').classList.add('active');
+                video.play().catch(() => { video.onended(); });
             }
         }
 
@@ -295,22 +269,13 @@
             audio.play();
             const card = document.getElementById('card_bday');
             card.classList.add('active');
-            typeWriter("Happy Birthday Mehwi! Tum woh ehsaas ho jo samjha nahi ja sakta, sirf mehsoos kiya ja sakta hai.", "text_bday", 50, () => {
+            typeWriter(bdayWish, "text_bday", 35, () => {
                 document.getElementById('btn_bday').style.display = 'inline-block';
             });
         };
 
-        function showDedication() {
-            document.getElementById('card_bday').classList.remove('active');
-            const card = document.getElementById('card_dedication');
-            card.classList.add('active');
-            typeWriter("Mehwi, is birthday par maine tumhare liye yeh novel likha hai jo hamari dastan biyan karega. Yeh sirf tumhare liye hai...", "text_dedication", 50, () => {
-                document.getElementById('btn_dedication').style.display = 'inline-block';
-            });
-        }
-
         function startNovel() {
-            document.getElementById('card_dedication').classList.remove('active');
+            document.getElementById('card_bday').classList.remove('active');
             showNextNovel(0);
         }
 
@@ -319,30 +284,15 @@
             if (index < novelData.length) {
                 const card = document.getElementById(`novelCard${index}`);
                 card.classList.add('active');
-                typeWriter(novelData[index].text, `novelText${index}`, 40, () => {
+                typeWriter(novelData[index].text, `novelText${index}`, 35, () => {
                     document.getElementById(`novelBtn${index}`).style.display = 'inline-block';
                 });
-            } else { triggerEnding(); }
-        }
-
-        function triggerEnding() {
-            const ending = document.getElementById('finalEnding');
-            ending.style.display = 'flex';
-            typeWriter("I Love You Mehwi. Tum yaad bhi ho aur mera hissa bhi. ❤️", "finalMsg", 80);
-        }
-
-        // Particles
-        for (let i = 0; i < 20; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            document.body.appendChild(p);
+            } else {
+                document.getElementById('finalEnding').style.display = 'flex';
+                typeWriter("I Love You Mehwi. ❤️", "finalMsg", 80);
+            }
         }
     </script>
 </body>
 
-
 </html>
-
-
